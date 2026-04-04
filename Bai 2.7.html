@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài 2.7 - Quản lý sinh viên - UIVT Full</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #f4f4f4;
+            padding: 10px;
+        }
+
+        .wrapper {
+            max-width: 1000px;
+            margin: 0 auto;
+            border: 2px solid #000;
+            background-color: #fff;
+        }
+
+        /* Header */
+        header {
+            background-color: #000;
+            color: #fff;
+            text-align: center;
+            padding: 15px;
+        }
+        header p { font-size: 13px; text-transform: uppercase; margin-bottom: 5px; }
+        header h1 { font-size: 18px; }
+
+        /* Layout Container */
+        .container {
+            display: flex;
+            border-top: 1px solid #000;
+        }
+
+        /* Sidebar trái */
+        aside {
+            width: 200px;
+            background-color: #f0f0f0;
+            border-right: 1px solid #000;
+        }
+        aside ul { list-style: none; }
+        aside li {
+            padding: 10px 15px;
+            border-bottom: 1px solid #ccc;
+            font-size: 14px;
+        }
+        aside li.active { background-color: #d9d9d9; font-weight: bold; }
+
+        /* Main Content */
+        main {
+            flex: 1;
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .section {
+            border: 1px solid #000;
+            width: 100%;
+        }
+
+        .title {
+            background-color: #000;
+            color: #fff;
+            padding: 5px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        /* Form nhập liệu */
+        .form-body { padding: 15px; }
+        .row { display: flex; margin-bottom: 8px; align-items: center; }
+        .row label { width: 100px; font-size: 14px; }
+        .row input[type="text"] { flex: 1; padding: 3px; border: 1px solid #999; }
+        .file-box { display: flex; flex: 1; gap: 5px; }
+        .btn-group { margin-left: 100px; margin-top: 5px; }
+        button { padding: 2px 10px; cursor: pointer; border: 1px solid #999; background: #eee; font-size: 13px;}
+
+        /* Bảng hiển thị (Div thay Table) */
+        .table-sim { display: flex; flex-direction: column; }
+        .t-row { display: flex; border-bottom: 1px solid #000; }
+        .t-row.head { background-color: #d9d9d9; font-weight: bold; text-align: center; }
+        .t-cell { 
+            padding: 5px; 
+            border-right: 1px solid #000; 
+            font-size: 13px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .t-cell:last-child { border-right: none; }
+.c-stt { width: 40px; }
+        .c-id { width: 70px; }
+        .c-name { flex: 2; justify-content: flex-start; padding-left: 10px; }
+        .c-date { flex: 1; }
+        .c-img { flex: 1; }
+
+        /* PHẦN LỚP CHUYÊN ĐỀ (Góc dưới bên phải) */
+        .bottom-area {
+            display: flex;
+            gap: 15px;
+            align-items: flex-start;
+        }
+
+        .note-box {
+            flex: 1;
+            border: 1px solid #000;
+            padding: 10px;
+            background-color: #fff;
+            display: flex;
+            gap: 10px;
+        }
+
+        .icons {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .icon-item {
+            width: 50px;
+            height: 50px;
+            background: #000;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+            font-weight: bold;
+            border-radius: 4px;
+        }
+
+        .icon-item span { font-size: 14px; }
+
+        .note-text {
+            font-size: 13px;
+            line-height: 1.4;
+            font-style: italic;
+        }
+
+        /* Footer */
+        footer {
+            display: flex;
+            justify-content: space-between;
+            background-color: #f0f0f0;
+            padding: 10px;
+            border-top: 1px solid #000;
+            font-size: 11px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="wrapper">
+    <header>
+        <p>Khoa Công nghệ thông tin - Trường Đại học Công nghiệp Việt Trì</p>
+        <h1>CHƯƠNG TRÌNH QUẢN LÝ SINH VIÊN</h1>
+    </header>
+
+    <div class="container">
+        <aside>
+            <ul>
+                <li class="active">Trang chủ</li>
+                <li>Quản lý sinh viên</li>
+                <li>Quản lý điểm</li>
+                <li>Quản lý lớp học</li>
+                <li>Quản lý khoa</li>
+                <li>Quản lý người dùng</li>
+                <li>Chức năng khác</li>
+            </ul>
+        </aside>
+
+        <main>
+            <div class="section">
+                <div class="title">THÊM SINH VIÊN</div>
+                <div class="form-body">
+                    <div class="row"><label>Mã sinh viên</label><input type="text"></div>
+                    <div class="row"><label>Họ tên</label><input type="text"></div>
+                    <div class="row"><label>Ngày sinh</label><input type="text"></div>
+                    <div class="row">
+                        <label>Hình</label>
+                        <div class="file-box"><input type="text" readonly><button>Browse...</button></div>
+                    </div>
+                    <div class="btn-group">
+                        <button>Add</button> <button>Update</button> <button>Save</button>
+                    </div>
+                </div>
+            </div>
+<div class="bottom-area">
+                <div class="section" style="flex: 2;">
+                    <div class="title">THÔNG TIN SINH VIÊN</div>
+                    <div class="table-sim">
+                        <div class="t-row head">
+                            <div class="t-cell c-stt">STT</div>
+                            <div class="t-cell c-id">MASV</div>
+                            <div class="t-cell c-name">Họ tên</div>
+                            <div class="t-cell c-date">Ngày sinh</div>
+                            <div class="t-cell c-hinh">Hình</div>
+                        </div>
+                        <div class="t-row">
+                            <div class="t-cell c-stt">1</div>
+                            <div class="t-cell c-id">TH09</div>
+                            <div class="t-cell c-name">Nguyễn Lan</div>
+                            <div class="t-cell c-date">1/1/1986</div>
+                            <div class="t-cell c-hinh">h1.jpg</div>
+                        </div>
+                        <div class="t-row">
+                            <div class="t-cell c-stt">2</div>
+                            <div class="t-cell c-id">TH89</div>
+                            <div class="t-cell c-name">Thanh Nhàn</div>
+                            <div class="t-cell c-date">1/8/1985</div>
+                            <div class="t-cell c-hinh">h2.jpg</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="note-box">
+                    <div class="icons">
+                        <div class="icon-item">HTML<br><span>&lt;/&gt;</span></div>
+                        <div class="icon-item">CSS<br><span>{ }</span></div>
+                    </div>
+                    <div class="note-text">
+                        <strong>Lớp chuyên đề về HTML và CSS:</strong><br>
+                        trang bị kiến thức cơ bản về xây dựng cấu trúc và định dạng trang web bằng HTML và CSS
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <footer>
+        <div>
+            Khoa Công nghệ Thông tin - Số 9 Tiên Sơn, Phường Thanh Miễu, Tỉnh Phú Thọ<br>
+            Email: khcntt@vui.edu.vn
+        </div>
+        <div style="text-align: right;">
+            Thông báo về lịch thi học kì<br>
+            Nhịp sống trẻ
+        </div>
+    </footer>
+</div>
+
+</body>
+</html>
