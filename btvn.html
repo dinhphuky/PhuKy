@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tin tức 24H</title>
+  <style>
+    body {
+      max-width: 80%;
+      margin: auto;
+      font-family: "Segoe UI", Arial, sans-serif;
+      background: #f9fbfd;
+      color: #333;
+    }
+    header {
+      background: #4a90e2;
+      color: #fff;
+      text-align: center;
+      padding: 20px 0;
+      position: relative;
+    }
+    header img {
+      width: 70px;
+      height: 70px;
+      position: absolute;
+      top: 15px;
+      left: 20px;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 34px;
+      line-height: 70px;
+    }
+    nav {
+      background: #357abd;
+      padding: 10px 0;
+    }
+    nav ul {
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+    nav li {
+      display: inline-block;
+      margin: 0 15px;
+    }
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+      padding: 6px 12px;
+      border-radius: 4px;
+    }
+    nav a:hover {
+      background: #5fa8f5;
+    }
+    main {
+      display: grid;
+      grid-template-columns: 1fr 2fr 1.5fr;
+      gap: 20px;
+      background: #fff;
+      padding: 25px;
+      margin-top: 15px;
+      border-radius: 6px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    aside {
+      background: #eaf4ff;
+      padding: 15px;
+      border-radius: 6px;
+      line-height: 1.8;
+    }
+    section {
+      padding: 0 10px;
+    }
+    section input, section select, section textarea {
+      width: 100%;
+      margin-bottom: 12px;
+      padding: 8px;
+      border: 1px solid #c5d9f5;
+      border-radius: 4px;
+      font-size: 14px;
+    }
+    section textarea {
+      height: 120px;
+    }
+    .btn {
+      padding: 8px 14px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: 600;
+    }
+    .send {
+      background: #4a90e2;
+      color: #fff;
+    }
+    .send:hover {
+      background: #357abd;
+    }
+    .reset {
+      background: #9e9e9e;
+      color: #fff;
+      margin-left: 10px;
+    }
+    .reset:hover {
+      background: #616161;
+    }
+    .sidebar {
+      background: #f5faff;
+      padding: 15px;
+      border-left: 2px solid #c5d9f5;
+      border-radius: 6px;
+    }
+    .sidebar ul {
+      list-style: none;
+      padding: 0;
+    }
+    .sidebar li {
+      margin-bottom: 12px;
+    }
+    .sidebar a {
+      color: #357abd;
+      text-decoration: none;
+      font-weight: 500;
+    }
+    footer {
+      background: #357abd;
+      color: #fff;
+      text-align: center;
+      padding: 15px 0;
+      margin-top: 20px;
+      border-radius: 6px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="C:\Users\DELL\Downloads\taichinh.jfif">
+    <h1>TIN TỨC 24H</h1>
+  </header>
+
+  <nav>
+    <ul>
+      <li><a href="#">Chính trị</a></li>
+      <li><a href="#">Xã hội</a></li>
+      <li><a href="#">Sức khỏe</a></li>
+      <li><a href="#">Giáo dục</a></li>
+      <li><a href="#">Thể thao</a></li>
+      <li><a href="#">Liên hệ</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <aside>
+      <p>Họ tên: <span style="color:red">*</span></p>
+      <p>Địa chỉ:</p>
+      <p>Số điện thoại: <span style="color:red">*</span></p>
+      <p>Giới tính:</p>
+      <p>Năm sinh:</p>
+      <p>Nội dung liên hệ: <span style="color:red">*</span></p>
+    </aside>
+
+    <section>
+      <form>
+        <input type="text" placeholder="Họ tên">
+        <input type="text" placeholder="Địa chỉ">
+        <input type="tel" placeholder="Số điện thoại">
+
+        <div>
+          <input type="radio" name="gender" id="male"> <label for="male">Nam</label>
+          <input type="radio" name="gender" id="female"> <label for="female">Nữ</label>
+        </div>
+
+        <select>
+          <option>2003</option>
+          <option>2004</option>
+          <option>2005</option>
+        </select>
+
+        <textarea placeholder="Nội dung liên hệ..."></textarea>
+
+        <div>
+          <input type="submit" value="Gửi thông tin góp ý" class="btn send">
+          <input type="reset" value="Nhập lại" class="btn reset">
+        </div>
+      </form>
+    </section>
+
+    <div class="sidebar">
+      <ul>
+        <li><a href="#">Tin tức thị trường</a></li>
+        <li><a href="#">Tin tức trong ngày</a></li>
+        <li><a href="#">Thông tin chứng khoán</a></li>
+        <li><a href="#">Sức khỏe đời sống</a></li>
+        <li><a href="#">Công nghệ thông tin</a></li>
+      </ul>
+    </div>
+  </main>
+
+  <footer>
+    <p>Cơ quan chủ quản: Công ty Cổ phần Quảng cáo Trực tuyến 24H<br><b>© 24h.com</b></p>
+  </footer>
+</body>
+</html>
