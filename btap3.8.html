@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Đăng nhập</title>
+    <style>
+        body {
+            width: 40%;
+            margin: 0 auto;
+            line-height: 2.0;
+        }
+        .left {
+            width: 30%;
+            float: left;
+        }
+        .right {
+            width: 70%;
+            float: left;
+        }
+        h1 {
+            text-align: center;
+        }
+        .thongbao {
+            color: red; /* chữ đỏ khi báo lỗi */
+            margin-left: 10px;
+        }
+        .eye {
+            cursor: pointer;
+            margin-left: 5px;
+        }
+    </style>
+    <script>
+        function load() {
+            document.getElementById('hoten').focus();
+            // nút đăng nhập có thể ấn ngay
+            document.getElementById('dangnhap').disabled = false;
+        }
+        function kiemtra() {
+            let hoten = document.getElementById('hoten').value;
+            let matkhau = document.getElementById('matkhau').value;
+
+            // kiểm tra tên đăng nhập
+            if (hoten == "") {
+                document.getElementById('usernameMsg').innerHTML = "Tên đăng nhập không được để trống";
+            } else {
+                document.getElementById('usernameMsg').innerHTML = "";
+            }
+
+            // kiểm tra mật khẩu
+            if (matkhau == "") {
+                document.getElementById('passwordMsg').innerHTML = "Vui lòng nhập mật khẩu";
+            } else if (matkhau.length < 8) {
+                document.getElementById('passwordMsg').innerHTML = "Nhập sai: mật khẩu phải >= 8 ký tự";
+            } else {
+                document.getElementById('passwordMsg').innerHTML = "";
+            }
+
+            // nếu hợp lệ thì thông báo thành công
+            if (hoten != "" && matkhau != "" && matkhau.length >= 8) {
+                alert("Đăng nhập thành công");
+            }
+        }
+
+        // bật/tắt hiển thị mật khẩu
+        function togglePassword() {
+            let input = document.getElementById('matkhau');
+            let eye = document.getElementById('eyeIcon');
+            if (input.type === "password") {
+                input.type = "text";
+                eye.textContent = "🙈";
+            } else {
+                input.type = "password";
+                eye.textContent = "👁️";
+            }
+        }
+    </script>
+</head>
+<body onload="load();">
+    <h1>ĐĂNG NHẬP</h1>
+    <form name="f1">
+        <div class="left">
+            <label>Tên đăng nhập:</label><br>
+            <label>Mật khẩu:</label>
+        </div>
+        <div class="right">
+            <input type="text" name="hoten" id="hoten" size="30">
+            <span class="thongbao" id="usernameMsg"></span><br>
+
+            <input type="password" name="matkhau" id="matkhau" size="30">
+            <span class="eye" id="eyeIcon" onclick="togglePassword()">👁️</span>
+            <span class="thongbao" id="passwordMsg"></span><br>
+
+            <input type="button" onclick="kiemtra()" name="dangnhap" id="dangnhap" value="Đăng nhập">
+        </div>
+    </form>
+</body>
+</html>
